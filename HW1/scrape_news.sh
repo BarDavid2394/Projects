@@ -6,10 +6,7 @@ data=$(wget --no-check-certificate -O - "$site" 2>/dev/null)
 #Find the relevant articles according to the demand type of links
 articles=$(echo "$data" | \
 grep -oP "https://(www.)?ynetnews.com/article/[0-9a-zA-Z]+" | sort | uniq)
-# shellcheck disable=SC2005
 echo "$(echo "$articles" | wc -l)" >> results.csv
-#echo "$(echo "$articles" | wc -l)"
-# shellcheck disable=SC2162
 echo "$articles" | while read  url; do
   relevant_article="$url"
   #Initialize the string variable
@@ -18,7 +15,6 @@ echo "$articles" | while read  url; do
  #Loop through the names and add them to the string if they are found
  for name in "Netanyahu" "Gantz" "Bennett"; do
     count_name=$(echo -n "$Link_data" | grep -o --color=always "$name" | wc -l)
-    # shellcheck disable=SC2027
     results=$results$name", "$count_name", "
  done
     results=$results"Peretz, "$(echo "$Link_data" | grep -o "Peretz" | wc -l)
