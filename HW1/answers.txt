@@ -1,0 +1,13 @@
+Questions:
+1. We think that to do it manually will take at least 6 hours - including all the process : finding the links, going through each link and updating the results in a csv file. to be honest.
+2. The efficiency is absoulutley minid blowing. you can apply it on alomost every field imaginable, because in every field you need to gather and analyze data. so basically everything. 
+one example is in sports - collecting and analazying data on players performnace to effectivley improve them. 
+3. If we wanted to automate the code to start every hour, we had to connect some type of time element to our code - maybe link the scriprt to standart clock on google. 
+when the clock is linked, there are many ways to automate that - one example is using a condition that based on the minutes digits - everytime the minutes digits are "00" - run the code
+in addition, to deal with duplication of articles, this is our solution:
+a. give each article a unique ID.
+b. make an hash table and insert each article's ID using hasing function
+c.in each eteration, we'll try to find the article's ID. in this way, we can know if we searched this specific article before.
+d. stage "d" is divided into 2 solutions:
+					 i. because its the main news site, each article will be there for maximum a few days, lets say a week. so, similar to car cameras, we'll clear the hashtable each week.
+					 ii. if we still want to keep all the articles even weeks after, we can rehash the table.
