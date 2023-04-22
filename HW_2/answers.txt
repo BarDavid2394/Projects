@@ -1,0 +1,7 @@
+1. As we can see at the code, all the tests which check if the input is valid/ the program gets the right number of argouments and etc, were repeated. This part is "recycled" between the diffrent C-programs.we could optimize it by merging all the programs into one program where each program will be an auxiliary function that will be summoned by the main function. In addition, The "recycled" part could also become an auxiliary function in the big program.
+The big program will be more efficient since we will use the "recycled" part only once for all other programs. 
+We will note that if we want to handle a specific program, we can access the corresponding auxiliary function and handle it accordingly.
+
+2.We created a script that ran the randomize command 3 different times for X eterations, when X = 100,1000,10000. after running the calc_stat.sh script, using the histogram tool and the other statistics,
+We saw that the more etarions we did, the more the numbers were uniformley distributed - the histogram will be pretty even and the median and mean will get closer to 50.
+So, thereby, We think that the more numbers you randomize, the more the numbers will be uniformley distributed.
