@@ -130,8 +130,8 @@ int main(int argc, char const *argv[])
             }
             if (NULL != stack_arr[stack_id]) {
                 is_empty = stack_is_empty(stack_arr[stack_id]);
-                printf("stack %d is: %s\n", 
-                    stack_id, 
+                printf("stack %d is: %s\n",
+                    stack_id,
                     is_empty ? "empty" : "not empty");
             }
         }

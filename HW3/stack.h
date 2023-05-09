@@ -2,20 +2,29 @@
 #define __STACK__
 
 #include <stddef.h>  /* size_t */
-#include <stdbool.h> /* bool   */ 
+#include <stdbool.h> /* bool   */
 #include "stdlib.h"
 #include "stdio.h"
 
-typedef enum { SUCCESS = 0, FAIL } Result; 
+typedef enum {
+    SUCCESS = 0, FAIL
+} Result;
 
 typedef struct stack *pstack_t;
 typedef void *elem_t;
 
 /* ------------------------------------------ */
-/* Add here declarations of function pointers */
-/* ------------------------------------------ */
+typedef elem_t (*clone_t)(elem_t e);
 
-pstack_t stack_create(size_t max_num_of_elem, /* Complete */);
+typedef void (*destroy_t)(elem_t e);
+
+typedef void (*print_t)(elem_t e);
+
+/* ------------------------------------------ */
+pstack_t stack_create(size_t max_num_of_elem,
+                      clone_t elem_clone,
+                      destroy_t elem_destroy,
+                      print_t elem_print);
 
 /**
  * @fn void stack_destroy(pstack_t s);
@@ -26,6 +35,22 @@ pstack_t stack_create(size_t max_num_of_elem, /* Complete */);
  * @return none
  */
 Result stack_destroy(pstack_t stack);
+
+Result stack_push(pstack_t stack, elem_t new);
+
+void stack_pop(pstack_t stack);
+
+elem_t stack_peek(pstack_t stack);
+
+size_t stack_size(pstack_t stack);
+
+bool stack_is_empty(pstack_t stack);
+
+int stack_capacity(pstack_t stack);
+
+void stack_print(pstack_t stack);
+
+
 /* ------------------------------------------ */
 /* Add here the rest of the declarations      */
 /* ------------------------------------------ */
