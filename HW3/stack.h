@@ -3,8 +3,8 @@
 
 #include <stddef.h>  /* size_t */
 #include <stdbool.h> /* bool   */
-#include "stdlib.h"
-#include "stdio.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef enum {
     SUCCESS = 0, FAIL

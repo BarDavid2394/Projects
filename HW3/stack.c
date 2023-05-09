@@ -42,7 +42,7 @@ Result stack_destroy(pstack_t stack) {
 }
 
 Result stack_push(pstack_t stack, elem_t new_elem) {
-    if ((stack == NULL) && (stack->size >= stack->max_size)) {
+    if ((stack == NULL) || (stack->size >= stack->max_size)) {
         return FAIL;
     }
     stack->stack_elements[stack->size++] = stack->elem_clone(new_elem);
@@ -53,7 +53,7 @@ void stack_pop(pstack_t stack) {
     if (stack == NULL) {
         return;
     }
-    stack->elem_destroy(stack->stack_elements[stack->size]);
+    stack->elem_destroy(stack->stack_elements[stack->size -1]);
     stack->size--;
 }
 
@@ -83,7 +83,11 @@ int stack_capacity(pstack_t stack) {
 }
 
 void stack_print(pstack_t stack) {
+    printf("Check 1");
     for (int i = stack->size - 1; i >= 0; i--) {
+        printf("Check 2");
         stack->elem_print(stack->stack_elements[i]);
     }
+    printf("Check3");
+
 }

@@ -2,8 +2,8 @@
 #define __STUDENT__
 
 #include "stack.h"
-#include "stdlib.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 typedef struct student {
 	char *name;
 	int age;
@@ -16,5 +16,4 @@ void student_print(elem_t e);
 /* ------------------------------------------ */
 /* Add here the reset of the declarations     */
 /* ------------------------------------------ */
-
 #endif /* __STUDENT__ */ 
