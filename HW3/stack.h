@@ -10,15 +10,22 @@ typedef enum {
     SUCCESS = 0, FAIL
 } Result;
 
-typedef struct stack *pstack_t;
 typedef void *elem_t;
-
 /* ------------------------------------------ */
 typedef elem_t (*clone_t)(elem_t e);
 
+typedef void (*print_t)(elem_t e);
+
 typedef void (*destroy_t)(elem_t e);
 
-typedef void (*print_t)(elem_t e);
+typedef struct stack {
+    elem_t *stack_elements;
+    int size;
+    int max_size;
+    clone_t elem_clone;
+    destroy_t elem_destroy;
+    print_t elem_print;
+} *pstack_t;
 
 /* ------------------------------------------ */
 pstack_t stack_create(size_t max_num_of_elem,

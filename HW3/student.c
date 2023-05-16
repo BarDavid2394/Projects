@@ -10,7 +10,7 @@ elem_t student_clone(elem_t e) {
         return NULL;
     }
     pstudent_t student = (student_t *) e;
-    pstudent_t copy_student = malloc(sizeof(pstudent_t));
+    pstudent_t copy_student =(struct student*)malloc(sizeof(struct student));
     if (copy_student == NULL) {
         return NULL;
     }
@@ -25,16 +25,13 @@ elem_t student_clone(elem_t e) {
 }
 
 void student_print(elem_t e) {
-    printf("Check 4");
     if (e == NULL) {
         return;
     }
     pstudent_t student = (student_t *) e;
-    printf("student name: %s, age: %d, id: %d\n", student->name, student->age, student->id);
-    printf("Check 5");
-
+    printf("student name: %s, age: %d, id: %d.\n", student->name, student->age, student->id);
 }
-//segmentation fault
+
 void student_destroy(elem_t e) {
     if (e == NULL) {
         return;
