@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
+//makes a copy of the student object and return it
 elem_t student_clone(elem_t e) {
     if (e == NULL) {
         return NULL;
@@ -23,15 +22,16 @@ elem_t student_clone(elem_t e) {
     copy_student->id = student->id;
     return copy_student;
 }
-
+//the function prints the student's information with all the fields
 void student_print(elem_t e) {
     if (e == NULL) {
         return;
     }
     pstudent_t student = (student_t *) e;
-    printf("student name: %s, age: %d, id: %d.\n", student->name, student->age, student->id);
+    printf("student name: %s, age: %d, id: %d.\n", student->name,
+           student->age, student->id);
 }
-
+//delete the object and the name from the memory
 void student_destroy(elem_t e) {
     if (e == NULL) {
         return;

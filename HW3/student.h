@@ -11,9 +11,10 @@ typedef struct student {
 }*pstudent_t, student_t;
 
 elem_t student_clone (elem_t e);
+/* ------------------------------------------ */
+//Declaration of deleting student object
 void student_destroy(elem_t e);
+//Declaration of printing student object
 void student_print(elem_t e);
 /* ------------------------------------------ */
-/* Add here the reset of the declarations     */
-/* ------------------------------------------ */
-#endif /* __STUDENT__ */ 
+#endif /* __STUDENT__ */
