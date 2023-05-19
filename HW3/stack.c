@@ -9,11 +9,13 @@ pstack_t stack_create(size_t max_num_of_elem,
     //allocating space to the new stack
     pstack_t new_stack =(struct stack*)malloc(sizeof(struct stack));
     if (new_stack == NULL) {
+        fprintf(stderr," stack Allocation failed.");
         return NULL;
     }
     //allocating space for the array of elements inside the stack
     new_stack->stack_elements=(elem_t)malloc(sizeof(elem_t) * max_num_of_elem);
     if (new_stack->stack_elements == NULL) {
+        fprintf(stderr,"Array allocation failed");
         return NULL;
     }
     new_stack->size = 0;
@@ -26,6 +28,7 @@ pstack_t stack_create(size_t max_num_of_elem,
 //The function destroys the stack with all the elements inside, returns result
 Result stack_destroy(pstack_t stack) {
     if (stack == NULL) {
+        fprintf(stderr, "Failed - stack is NULL");
         return FAIL;
     }
     //as long as the stack is not empty, keep popping elements.
@@ -41,6 +44,7 @@ Result stack_destroy(pstack_t stack) {
 Result stack_push(pstack_t stack, elem_t new_elem) {
     //we check that the stack we got is valid and not full.
     if ((stack == NULL) || (stack->size >= stack->max_size)) {
+        fprintf(stderr,"Failed - Stack is full / NULL");
         return FAIL;
     }
     //copying the element and inserting the copy.
@@ -52,6 +56,7 @@ Result stack_push(pstack_t stack, elem_t new_elem) {
 void stack_pop(pstack_t stack) {
     //we check that the stack we got is valid and not empty.
     if (stack == NULL || stack_is_empty(stack)) {
+        fprintf(stderr,"Stack is empty / NULL");
         return;
     }
     stack->elem_destroy(stack->stack_elements[stack->size -1]);
@@ -61,7 +66,7 @@ void stack_pop(pstack_t stack) {
 elem_t stack_peek(pstack_t stack) {
     //we check that the stack we got is valid and not empty.
     if (stack == NULL || stack_is_empty(stack)) {
-        printf("Error: Cannot peek an empty stack.");
+        fprintf(stderr, "Error: Cannot peek an empty stack.");
         return NULL;
     }
     return stack->stack_elements[stack->size-1];
@@ -69,6 +74,7 @@ elem_t stack_peek(pstack_t stack) {
 //returns the number of elements inside the stack
 size_t stack_size(pstack_t stack) {
     if (stack == NULL) {
+        fprintf(stderr,"0");
         return 0;
     }
     return stack->size;
@@ -76,12 +82,16 @@ size_t stack_size(pstack_t stack) {
 //This function returns if true if the stack is empty. otherwise, false.
 bool stack_is_empty(pstack_t stack) {
     if (stack == NULL) {
-        return 0;
+        return false;
     }
     return stack->size == 0;
 }
 //this function returns the number of space left in the stack.
 int stack_capacity(pstack_t stack) {
+    if (stack == NULL) {
+        fprintf(stderr,"0");
+        return 0;
+    }
     return (stack->max_size - stack->size);
 }
 //printing the stack sent to the function.
