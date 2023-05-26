@@ -41,8 +41,8 @@ void student_destroy (void *element)
     {
         return;
     }
-    free(student->name);
     list_destroy(student->courses);
+    free(student->name);
     free(student);
 }
 void course_destroy (void *element)
@@ -69,12 +69,12 @@ void grades_destroy(struct grades *grades)
     {
         struct iterator* student_head = list_begin(grades->students);
         student_t curr_student = list_get(student_head);
-        struct iterator* course_head = list_begin(curr_student->courses);
-        course_t curr_courses = list_get(course_head);
-        course_destroy(curr_courses);
+//        struct iterator* course_head = list_begin(curr_student->courses);
+//            course_t curr_courses = list_get(course_head);
+//            course_destroy(curr_courses);
         student_destroy(curr_student);
         student_head = list_next(student_head);
-        course_head = list_next(course_head);
+//        course_head = list_next(course_head);
     }
     list_destroy(grades->students);
     free(grades);
@@ -144,15 +144,12 @@ course_t course_create (int grade,const char* course_name)
 
 int grades_add_student(struct grades *grades, const char *name, int id)
 {
-    printf("check 1\n");
     if(grades == NULL)
     {
-        printf("check 2\n");
         return FAIL;
     }
     student_t current = NULL;
     struct iterator* head = list_begin(grades->students);
-    printf("check 3\n");
     while (head != NULL) {
         current = list_get(head);
         if (current->ID == id) {
@@ -161,25 +158,18 @@ int grades_add_student(struct grades *grades, const char *name, int id)
         head = list_next(head);
     }
     student_t new_student =(struct student*) malloc(sizeof (struct student));
-    printf("check 5\n");
     if(new_student == NULL)
     {
-        printf("check 6\n");
         return FAIL;
     }
     new_student->ID = id;
-    printf("check 7\n");
     new_student->name= malloc(sizeof(char)* strlen(name)+1);
-    printf("check 8\n");
     if(new_student->name == NULL)
     {
-        printf("check 9\n");
         return FAIL;
     }
     strcpy(new_student->name,name);
-    printf("check 10\n");
     new_student->courses = list_init(student_clone,student_destroy);
-    printf("%d\n %s\n",new_student->ID,new_student->name);
     return list_push_back(grades->students, new_student);
 }
 
@@ -206,13 +196,12 @@ int grades_add_grade(struct grades *grades,
         struct iterator* course_head = list_begin(curr_student->courses);
         while (course_head != NULL) {
             course_t curr_course = list_get(course_head);
-            if (strcmp(curr_course->course_name, name)) {
+            if (strcmp(curr_course->course_name, name) == 0) {
                 return FAIL;
             }
             course_head = list_next(course_head);
         }
         course_t new_course = course_create(grade,name);
-        printf("%d",list_push_back(curr_student->courses, new_course));
         return list_push_back(curr_student->courses, new_course);
     }
     return FAIL;
