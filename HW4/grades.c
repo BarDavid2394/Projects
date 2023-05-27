@@ -60,6 +60,7 @@ course_t course_create (int grade,const char* course_name)
         free(course);
         return NULL;
     }
+    //inserting the course name and grade into the element
     strcpy(course->course_name, course_name);
     course->grade= grade;
     return course;
@@ -68,13 +69,14 @@ course_t course_create (int grade,const char* course_name)
  and feedback if the action success */
 int course_clone (void *element, void **output)
 {
-    course_t course = (course_t) (course_t *) element;
+    course_t course = (struct courses *) element;
     course_t copy_course = (struct courses*) malloc(sizeof(struct courses));
     if(copy_course == NULL) {
         return FAIL;
     }
     copy_course->course_name = malloc(sizeof(char)
             * strlen(course->course_name)+1);
+    //if course_name allocation is NULL, we want to free the element.
     if(copy_course->course_name == NULL)
     {
         free(copy_course);
@@ -82,6 +84,7 @@ int course_clone (void *element, void **output)
     }
     strcpy(copy_course->course_name, course->course_name);
     copy_course->grade = course->grade;
+    //output will point to the copy we've just made
     *output = copy_course;
     course_destroy(course);
     return SUCCESS;
@@ -89,7 +92,7 @@ int course_clone (void *element, void **output)
 //the function destroy the course element and it's elements
 void course_destroy (void *element)
 {
-    course_t course = (course_t) (course_t *) element;
+    course_t course = (struct courses *) element;
     if(course == NULL)
     {
         return;
@@ -108,12 +111,14 @@ int student_clone (void *element, void **output)
         return FAIL;
     }
     copy_student->name= malloc(sizeof(char)* strlen(student->name)+1);
+    //if course_name allocation is NULL, we want to free the element.
     if(copy_student->name == NULL)
     {
         free(copy_student);
         return FAIL;
     }
     strcpy(copy_student->name,student->name);
+    //initializing a list for the copy courses
     copy_student->courses = list_init(course_clone,course_destroy);
     copy_student->ID = student->ID;
     struct iterator* head_course_src = list_begin(student->courses);
@@ -123,6 +128,7 @@ int student_clone (void *element, void **output)
         list_push_back(copy_student->courses, src_courses);
         head_course_src = list_next(head_course_src);
     }
+    //output will point to the copy we've just made
     *output = copy_student;
     student_destroy(student);
     return SUCCESS;
@@ -130,7 +136,7 @@ int student_clone (void *element, void **output)
 //the function destroy the student element and it's elements
 void student_destroy (void *element)
 {
-    student_t student = (student_t) (student_t *) element;
+    student_t student = (struct student *) element;
     if(student == NULL)
     {
         return;
@@ -178,6 +184,7 @@ int grades_add_grade(struct grades *grades,
     if (grades == NULL) {
         return FAIL;
     }
+    //grade must be a number in the range 0-100
     if ((grade > MAX_GRADE) || (grade < MIN_GRADE)) {
         return FAIL;
     }
@@ -186,6 +193,7 @@ int grades_add_grade(struct grades *grades,
     while (head != NULL)
     {
         student_t curr_student = list_get(head);
+        //checks if the student doesn't already exist
         if(curr_student->ID != id)
         {
             head = list_next(head);
@@ -204,7 +212,7 @@ int grades_add_grade(struct grades *grades,
     }
     return FAIL;
 }
-//Calcs the average of the student with "id" in "grades".
+//Calculates the average of the student with "id" in "grades".
 float grades_calc_avg(struct grades *grades, int id, char **out)
 {
     if(grades == NULL)
@@ -249,7 +257,7 @@ float grades_calc_avg(struct grades *grades, int id, char **out)
             course_counter++;
             head_course = list_next(head_course);
         }
-        return (sum/course_counter);
+        return (float)(sum/course_counter);
 }
 //Prints the courses of the student with "id"
 int grades_print_student(struct grades *grades, int id)
@@ -263,6 +271,7 @@ int grades_print_student(struct grades *grades, int id)
     student_t current_student= list_get(head);
     while(head!=NULL){
         current_student= list_get(head);
+        //looking for the exact student that needs to pe printed
         if(current_student->ID!=id){
             head=list_next(head);
             continue;
@@ -273,6 +282,7 @@ int grades_print_student(struct grades *grades, int id)
         course_t current_course=list_get(head_course);
         head=list_next(head);
         while(head_course!=NULL) {
+            //counter is for output issues. we want a different first print.
             counter++;
             current_course = list_get(head_course);
             if(counter==1){
