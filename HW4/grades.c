@@ -86,7 +86,6 @@ int course_clone (void *element, void **output)
     copy_course->grade = course->grade;
     //output will point to the copy we've just made
     *output = copy_course;
-    course_destroy(course);
     return SUCCESS;
 }
 //the function destroy the course element and it's elements
@@ -120,6 +119,10 @@ int student_clone (void *element, void **output)
     strcpy(copy_student->name,student->name);
     //initializing a list for the copy courses
     copy_student->courses = list_init(course_clone,course_destroy);
+    if(copy_student->courses == NULL)
+    {
+        return FAIL;
+    }
     copy_student->ID = student->ID;
     struct iterator* head_course_src = list_begin(student->courses);
     while(head_course_src != NULL)
@@ -130,7 +133,6 @@ int student_clone (void *element, void **output)
     }
     //output will point to the copy we've just made
     *output = copy_student;
-    student_destroy(student);
     return SUCCESS;
 }
 //the function destroy the student element and it's elements
@@ -174,7 +176,9 @@ int grades_add_student(struct grades *grades, const char *name, int id)
     }
     strcpy(new_student->name,name);
     new_student->courses = list_init(student_clone,student_destroy);
-    return list_push_back(grades->students, new_student);
+    int result = list_push_back(grades->students, new_student);
+    student_destroy(new_student);
+    return result;
 }
 //Adds a course with "name" and "grade" to the student with "id"
 int grades_add_grade(struct grades *grades,
@@ -208,7 +212,9 @@ int grades_add_grade(struct grades *grades,
             course_head = list_next(course_head);
         }
         course_t new_course = course_create(grade,name);
-        return list_push_back(curr_student->courses, new_course);
+        int result = list_push_back(curr_student->courses, new_course);
+        course_destroy(new_course);
+        return result;
     }
     return FAIL;
 }
