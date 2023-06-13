@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <iostream>
 
-class String : public std::error_code, public std::error_condition {
+class String {
     char *data;
     size_t length;
 

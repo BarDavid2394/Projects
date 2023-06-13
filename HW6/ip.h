@@ -15,12 +15,13 @@ namespace IP {
 
 class ip : public GenericField   {
 private:
-    unsigned int ip;
+
+    unsigned int ip_num;
     int mask;
     IP::Rule rule;
-
-
 public:
+    ip();
+    ip(const ip &ip_ad);
     bool set_value(String value);
     bool match (String packet);
     void set_rule(String str);
