@@ -7,7 +7,7 @@
 #include <stddef.h>
 #include <iostream>
 
-
+//comments are in the cpp file.
 namespace IP {
     enum Rule { SRC = 0, DST };
 }
@@ -25,8 +25,6 @@ public:
     bool set_value(String value);
     bool match (String packet);
     void set_rule(String str);
-//    void split_argument(String packet, String* numbers,IP::Rule rule);
-
 };
 
 

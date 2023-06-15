@@ -12,24 +12,19 @@ namespace Port {
     enum Rule { SRC = 0, DST };
 }
 
-
+//comments are in the cpp file.
 class port : public GenericField   {
 private:
-    short start_port, end_port;
     Port::Rule rule;
     String numbers;
+    int start_port, end_port;
 public:
     port();
     port(const port &port_ad);
     void set_rule(String str);
     bool set_value(String value);
     bool match (String packet);
-//    void split_argument(String packet, String* numbers,Port::Rule rule);
 };
-
-
-
-
 
 
 
