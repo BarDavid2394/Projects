@@ -1,6 +1,6 @@
 **Bar David's Projects and LeetCode Questions**
 
-Welcome to my repository! I'm Bar David, an Electrical and Computer Engineering student with a focus on software. Here, you'll find a collection of my projects and LeetCode questions that I've worked on during my studies.
+Welcome to my repository! I'm Bar David, an Electrical and Computer Engineering student at the Technion with a focus on software. Here, you'll find a collection of my projects and LeetCode questions that I've worked on during my studies.
 
 **About Me**
 I'm passionate about software development and constantly seek to expand my knowledge in this field. My projects reflect my dedication to learning and applying software engineering principles.
