@@ -1,0 +1,18 @@
+
+*** Phase 1 - arg w/o no spaces ***
+src-ip=3.3.3.3
+src-ip = 3.3.3.3
+ src-ip=   3.3.3.3
+ src-ip  =   3.3.3.3
+
+*** Phase 2 - arg w/ spaces in = ***
+src-ip=3.3.3.3
+src-ip = 3.3.3.3
+ src-ip=   3.3.3.3
+ src-ip  =   3.3.3.3
+
+*** Phase 3 - arg w/ tailing spaces ***
+src-ip=3.3.3.3
+src-ip = 3.3.3.3
+ src-ip=   3.3.3.3
+ src-ip  =   3.3.3.3
