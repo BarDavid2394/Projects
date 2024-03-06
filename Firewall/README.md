@@ -17,4 +17,4 @@ It includes common functionality for both classes.
 
 main.cpp: Contains the main function to demonstrate the usage of the firewall.
 
-Feel free to run in on your computer using the test iv'e provided. THANKS!
+Feel free to run the project on your computer using the test iv'e provided. THANKS!
