@@ -20,3 +20,4 @@ Contact
 Feel free to reach out to me if you have any questions or suggestions regarding my projects or LeetCode questions. You can contact me at [davidbar2394@gmail.com].
 
 
+"You don't become confident by shouting affirmations in the mirror, but by having a stack of undeniable proof that you are who you say you are."
