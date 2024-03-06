@@ -10,6 +10,9 @@ I'm passionate about software development and constantly seek to expand my knowl
 **Branch Predictor in C++**
 This project implements various branch predictors in C++. It provides solutions for different types of branch predictions, including global and local history, global and local finite state machines (FSM), and different sizes of Branch Target Buffers (BTB).
 
+**Firewall in C++**
+This project implements a firewall in C++ that verifies whether a given IP and port are in the correct range. It provides functionality to process packets and output verified IPs and ports.
+
 **LeetCode Questions**
 I've also included some LeetCode questions that I've solved as part of my learning process. These questions cover various algorithms and data structures commonly encountered in software development interviews.
 
