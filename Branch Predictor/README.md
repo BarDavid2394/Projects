@@ -14,3 +14,4 @@ and different sizes of Branch Target Buffers (BTB).
 
 **4**.Display of statistics related to branch prediction accuracy.
 
+Feel free to run the project on your computer using the test iv'e provided. THANKS!
