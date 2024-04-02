@@ -12,4 +12,4 @@ This project implements a cache in C++, taking into account various cache option
 **4**.Display of statistics related to cache hits, misses, and hit ratio.
 
 
-Thank you!
+Feel free to run the project on your computer using the test iv'e provided. THANKS!
