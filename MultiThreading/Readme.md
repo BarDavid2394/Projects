@@ -3,7 +3,12 @@ This project implements a MultiThreading simulator in C++, capable of running th
 
 Features
 **1**.Implementation of a MultiThreading simulator with Blocked MT and Fine MT configurations.
+
 **2**.Input handling for threads with instructions.
+
 **3**.Context switch functionality.
+
 **4**.Execution of threads using the runthread function.
+
 **5**.Output of register states and CPI statistics.
+
