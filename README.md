@@ -13,6 +13,9 @@ This project implements various branch predictors in C++. It provides solutions 
 **Firewall in C++**
 This project implements a firewall in C++ that verifies whether a given IP and port are in the correct range. It provides functionality to process packets and output verified IPs and ports.
 
+**Cache Implementation in C++**
+This project implements a cache in C++, providing solutions for different cache configurations and sizes. It includes support for Write-Back (WB), Write-Allocate (WA), and other cache options. The cache uses the Least Recently Used (LRU) replacement policy.
+
 **LeetCode Questions**
 I've also included some LeetCode questions that I've solved as part of my learning process. These questions cover various algorithms and data structures commonly encountered in software development interviews.
 
