@@ -23,6 +23,10 @@ This project implements a cache in C++, providing solutions for different cache 
 
 This project implements a bank in C++, featuring multiple ATMs that can perform various operations such as checking balance, withdrawing, depositing, transferring money, opening, and closing accounts. The project utilizes threads for each ATM, as well as additional threads for printing the current bank status (Accounts) and deducting fees from the accounts . Mutex and readers-writers locks are used for concurrency control.
 
+**MultiThreading Simulator in C++**
+
+This project implements a MultiThreading simulator in C++, capable of running threads with instructions on a Blocked MultiThreading (MT) and Fine MT configuration. The simulator provides output including register states and CPI (Cycles Per Instruction) statistics.
+
 
 **LeetCode Questions**
 
