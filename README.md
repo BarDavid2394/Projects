@@ -16,6 +16,10 @@ This project implements a firewall in C++ that verifies whether a given IP and p
 **Cache Implementation in C++**
 This project implements a cache in C++, providing solutions for different cache configurations and sizes. It includes support for Write-Back (WB), Write-Allocate (WA), and other cache options. The cache uses the Least Recently Used (LRU) replacement policy.
 
+**Bank Implementation in C++**
+This project implements a bank in C++, featuring multiple ATMs that can perform various operations such as checking balance, withdrawing, depositing, transferring money, opening, and closing accounts. The project utilizes threads for each ATM, as well as additional threads for printing the current bank status (Accounts) and deducting fees from the accounts . Mutex and readers-writers locks are used for concurrency control.
+
+
 **LeetCode Questions**
 I've also included some LeetCode questions that I've solved as part of my learning process. These questions cover various algorithms and data structures commonly encountered in software development interviews.
 
