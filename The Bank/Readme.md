@@ -13,4 +13,4 @@ The project utilizes threads for each ATM, as well as additional threads for pri
 
 **4**.Use of mutex and readers-writers locks for safe concurrent access to shared resources.
 
-You are more than welcome to downlaod the tests and project and try it yourself. THANKS!
+You are more than welcome to download the tests and project and try it yourself. THANKS!
